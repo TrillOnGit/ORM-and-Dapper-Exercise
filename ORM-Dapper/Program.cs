@@ -30,6 +30,27 @@ namespace ORM_Dapper
                 Console.WriteLine();
                 
             }
+            
+            var productRepo = new DapperProductRepository(conn);
+
+            var products = productRepo.GetAllProducts();
+
+            //productRepo.CreateProduct("test", 999.99, 1);
+            
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.Name);
+                Console.WriteLine("ID: " + product.ProductID);
+                Console.WriteLine("$" + product.Price);
+                Console.WriteLine($"{product.StockLevel} units remaining");
+                // if (product.Name == "test")
+                // {
+                //     Console.WriteLine(product.Name);
+                //     Console.WriteLine("ID: " + product.ProductID);
+                //     Console.WriteLine("$" + product.Price);
+                //     Console.WriteLine($"{product.StockLevel} units remaining");
+                // }
+            }
         }
     }
 }
